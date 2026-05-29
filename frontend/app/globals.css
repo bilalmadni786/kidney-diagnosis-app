@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: #0F172A;
+    color: #F1F5F9;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: rgba(15, 23, 42, 0.5);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, rgba(220,38,38,0.5), rgba(14,165,233,0.5));
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, rgba(220,38,38,0.8), rgba(14,165,233,0.8));
+  }
+}
+
+@layer components {
+  /* Glassmorphism card */
+  .glass-card {
+    @apply backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-red-400 via-rose-300 to-cyan-400 bg-clip-text text-transparent;
+  }
+
+  /* Glowing button - cyan */
+  .btn-glow {
+    @apply shadow-lg shadow-cyan-500/40 hover:shadow-cyan-500/70 transition-all duration-300;
+  }
+
+  /* Glowing button - medical red */
+  .btn-glow-red {
+    @apply shadow-lg shadow-red-600/50 hover:shadow-red-500/80 transition-all duration-300;
+  }
+
+  /* 3D hover press */
+  .btn-3d {
+    @apply hover:-translate-y-0.5 active:translate-y-0 transition-transform duration-150;
+  }
+}
+
+/* Animated background gradient */
+.bg-animated {
+  background: linear-gradient(
+    -45deg,
+    #0f172a,
+    #1a0608,
+    #0c1a2e,
+    #0a0f20
+  );
+  background-size: 300% 300%;
+  animation: gradientShift 12s ease infinite;
+}
+
+/* Dashed animated border for upload zone */
+@keyframes dash {
+  to { stroke-dashoffset: -20; }
+}
+
+.dashed-border-animate {
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(220, 38, 38, 0.6) 0,
+    rgba(220, 38, 38, 0.6) 8px,
+    transparent 8px,
+    transparent 16px
+  ),
+  repeating-linear-gradient(
+    180deg,
+    rgba(14, 165, 233, 0.6) 0,
+    rgba(14, 165, 233, 0.6) 8px,
+    transparent 8px,
+    transparent 16px
+  ),
+  repeating-linear-gradient(
+    90deg,
+    rgba(220, 38, 38, 0.6) 0,
+    rgba(220, 38, 38, 0.6) 8px,
+    transparent 8px,
+    transparent 16px
+  ),
+  repeating-linear-gradient(
+    180deg,
+    rgba(14, 165, 233, 0.6) 0,
+    rgba(14, 165, 233, 0.6) 8px,
+    transparent 8px,
+    transparent 16px
+  );
+  background-size: 16px 3px, 3px 16px, 16px 3px, 3px 16px;
+  background-position: 0 0, 0 0, 0 100%, 100% 0;
+  background-repeat: repeat-x, repeat-y, repeat-x, repeat-y;
+  animation: borderDash 0.6s linear infinite;
+}
+
+@keyframes borderDash {
+  0%   { background-position: 0 0, 0 0, 0 100%, 100% 0; }
+  100% { background-position: 16px 0, 0 -16px, -16px 100%, 100% 16px; }
+}
+
+/* Confidence bar fill animation */
+.confidence-fill {
+  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Message prose styles */
+.message-prose h1, .message-prose h2, .message-prose h3 {
+  @apply font-semibold text-cyan-300 mt-3 mb-1;
+}
+.message-prose p {
+  @apply mb-2 leading-relaxed;
+}
+.message-prose ul, .message-prose ol {
+  @apply pl-4 mb-2 space-y-1;
+}
+.message-prose li {
+  @apply text-slate-300;
+}
+.message-prose strong {
+  @apply text-white font-semibold;
+}
+.message-prose em {
+  @apply text-slate-400 text-sm;
+}
+.message-prose blockquote {
+  @apply border-l-2 border-amber-400/60 pl-3 my-2 text-amber-300/80 text-sm italic;
+}
+.message-prose code {
+  @apply font-mono text-cyan-300 bg-white/10 px-1 rounded text-sm;
+}

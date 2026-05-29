@@ -1,0 +1,15 @@
+{
+  "class_names": [
+    "Cyst",
+    "Normal",
+    "Stone",
+    "Tumor"
+  ],
+  "num_classes": 4,
+  "img_size": [
+    224,
+    224
+  ],
+  "model_architecture": "MobileNetV2 (fine-tuned)",
+  "validation_accuracy": 0.9754921793937683
+}
