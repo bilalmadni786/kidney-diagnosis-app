@@ -4,3 +4,9 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+[[redirects]]
+  from = "/api/backend/*"
+  to = "https://kidney-backend-5350.onrender.com/:splat"
+  status = 200
+  force = true
