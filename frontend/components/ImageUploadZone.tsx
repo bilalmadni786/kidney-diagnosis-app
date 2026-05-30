@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import { useDropzone } from "react-dropzone";
+import { useDropzone, type FileRejection } from "react-dropzone";
 import { motion, AnimatePresence } from "framer-motion";
 import { UploadCloud, X, FileImage } from "lucide-react";
 import { t, type LanguageCode } from "@/lib/translations";
@@ -29,7 +29,7 @@ export default function ImageUploadZone({
   const [error, setError] = useState<string>("");
 
   const onDrop = useCallback(
-    (accepted: File[], rejected: { errors: { message: string }[] }[]) => {
+    (accepted: File[], rejected: FileRejection[]) => {
       setError("");
       if (rejected.length) {
         setError(t("errorInvalidFile", language));
